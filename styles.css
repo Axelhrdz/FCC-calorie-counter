@@ -32,3 +32,9 @@ body{
 .mealHeadline{
     color: greenyellow;
 }
+
+
+.breakContainer, .lunchContainer, .dinnerContainer, .snacksContainer{
+    display: flex;
+    flex-direction: column;
+}

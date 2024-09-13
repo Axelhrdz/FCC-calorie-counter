@@ -3,9 +3,11 @@ const inputBudget = document.getElementById('inputBudget');
 const budget = document.getElementById('budget');
 const budgetHeadline = document.querySelector('.budgetHeadline');
 //Meals
+const mealsform = document.querySelector('.mealsForm');
 const meals = document.getElementById('meals');
 const btnAddMeal = document.getElementById('btnAddMeal');
 
+console.log(mealsform);
 console.log(meals.value);
 
 console.log(btnAddMeal);
@@ -41,10 +43,28 @@ const snacksContainer = document.querySelector('.snacksContainer');
 
 function createMeal(container){
     const inputMeal = document.createElement('input');
+    const labelMeal = document.createElement('label');
+    const calorieLabel = document.createElement('label');
     const inputCalorie = document.createElement('input');
+    
+    inputMeal.id = 'meal';
+    inputMeal.setAttribute('type', 'text');
+    labelMeal.id = 'labelMeal';
+    labelMeal.innerHTML = 'Meal ';
+    
+    inputCalorie.id = 'calorie';
+    inputCalorie.setAttribute('type', 'number');
+    calorieLabel.id = 'calorieLabel';
+    calorieLabel.innerHTML = 'Calories ';
 
+    container.append(labelMeal);
     container.append(inputMeal);
+
+    container.append(calorieLabel);
     container.append(inputCalorie);
+
+
+
 }
 
 let currentMealType = meals.value;
@@ -76,11 +96,50 @@ meals.addEventListener('change', function(){
 
 })
 
-// btnAddMeal.addEventListener('click', createMeal(mealContainer));
-
 btnAddMeal.addEventListener('click', function(){
     if(mealContainer){
         createMeal(mealContainer);
 
     }
 });
+
+
+//Getting meals values
+// let mealEntry;
+// let caloryEntry;
+let test;
+const mealBreakfastEntries = [
+    // {}
+]
+
+mealsform.addEventListener('submit', function(e){
+    e.preventDefault();
+    mealEntry = document.querySelectorAll('.mealsForm .breakfast .breakContainer input[id="meal"');
+    caloryEntry = document.querySelectorAll('.mealsForm .breakfast .breakContainer input[id="calorie"');
+    // console.log('submitting') 
+    // test = document.querySelectorAll('.mealsForm .breakfast .breakContainer input');
+    const currentFood = {
+        name: '',
+        calorie: 0
+    }
+
+    mealEntry.forEach((input, index) => {
+        console.log(input.value);
+        console.log(caloryEntry[index].value);
+
+        currentFood.name = input.value;
+        currentFood.calorie = caloryEntry[index].value;
+    });
+
+    mealBreakfastEntries.push(currentFood);
+
+    console.log(currentFood);
+    console.log(mealBreakfastEntries);
+
+    
+
+
+    
+
+    // console.log(currentFood);
+})
