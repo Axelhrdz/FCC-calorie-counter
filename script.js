@@ -48,7 +48,7 @@ function createMeal(container){
 }
 
 let currentMealType = meals.value;
-let mealContainer;
+let mealContainer = breakContainer;
 meals.addEventListener('change', function(){
     // console.log(this.value);
     currentMealType = this.value;
