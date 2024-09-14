@@ -99,47 +99,41 @@ meals.addEventListener('change', function(){
 btnAddMeal.addEventListener('click', function(){
     if(mealContainer){
         createMeal(mealContainer);
+        console.log(mealContainer);
 
     }
 });
 
 
 //Getting meals values
-// let mealEntry;
-// let caloryEntry;
-let test;
-const mealBreakfastEntries = [
-    // {}
-]
+const mealsList = [];
 
 mealsform.addEventListener('submit', function(e){
     e.preventDefault();
-    mealEntry = document.querySelectorAll('.mealsForm .breakfast .breakContainer input[id="meal"');
-    caloryEntry = document.querySelectorAll('.mealsForm .breakfast .breakContainer input[id="calorie"');
-    // console.log('submitting') 
-    // test = document.querySelectorAll('.mealsForm .breakfast .breakContainer input');
-    const currentFood = {
+    const mealsInputs = document.querySelectorAll('.mealsForm input[id="meal"]');
+    const caloriesInputs = document.querySelectorAll('.mealsForm input[id="calorie"]');
+
+    const currentDish = {
         name: '',
-        calorie: 0
+        calories: 0
     }
 
-    mealEntry.forEach((input, index) => {
-        console.log(input.value);
-        console.log(caloryEntry[index].value);
+    console.log(mealsInputs); 
+    console.log(caloriesInputs);
+    // console.log(Array.from(mealsInputs.value));
 
-        currentFood.name = input.value;
-        currentFood.calorie = caloryEntry[index].value;
-    });
+    mealsInputs.forEach((meal, index) => {
+        console.log(meal.value)
+        console.log(caloriesInputs[index].value);
 
-    mealBreakfastEntries.push(currentFood);
+        currentDish.name = meal.value;
+        currentDish.calories = caloriesInputs[index].value;
 
-    console.log(currentFood);
-    console.log(mealBreakfastEntries);
+        
+        console.log(currentDish);
+        console.log(mealsList);
+        
+    })
+    mealsList.push(currentDish);
 
-    
-
-
-    
-
-    // console.log(currentFood);
 })
