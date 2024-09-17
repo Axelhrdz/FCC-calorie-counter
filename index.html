@@ -15,31 +15,34 @@
             <input type="number" id="inputBudget" required>
         </form>
         <br>
-        <h3 class="budgetHeadline">Daily Calories</h3>
-        <span class="budget" id="budget"></span>
+        <div class="headline">
+            <h3 class="budgetHeadline">Daily Calories</h3>
+            <span class="budget" id="budget"></span>
+        </div>
         <br>
         <br>
-
         <!-- Meals -->
-        <select name="meals" id="meals">
-            <option value="breakfast" selected>Breakfast</option>
-            <option value="lunch">lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="snacks">Snacks</option>
-        </select>
-        <button type="button" id="btnAddMeal">Add entry</button>
-
+        <div class="entriesContainer">
+            <select name="meals" id="meals">
+                <option value="breakfast" selected>Breakfast</option>
+                <option value="lunch">lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snacks">Snacks</option>
+            </select>
+            <button type="button" id="btnAddMeal">Add entry</button>
+        </div>
+        <!-- Summary -->
         <form class="mealsForm">
             <!-- <h3 class="headline"></h3> -->
             <button type="submit" id="calculate">Calculate Calories</button>
         </form>
-
-        <div class="summary">
-            <span class="submittedCalories"></span>
+        <div class="summaryContainer">
+            <h2>Calorie Deficit</h2>
+            <b><span><span id="remainingCal"></span> Remaining Deficit</span></b>
+            <hr>
+            <span><span id="budet"></span> Calories Budgeted</span>
+            <span><span id="consumed"></span> Calories Consumed</span>
         </div>
-
-
-
     </main>
 
 

@@ -8,6 +8,12 @@ const meals = document.getElementById('meals');
 const headline = document.querySelector('.headline');
 const btnAddMeal = document.getElementById('btnAddMeal');
 const calculateBtn = document.getElementById('calculate');
+//Sumarry div
+const summaryContainer = document.querySelector('.summaryContainer');
+const submittedCalories = document.querySelector('submittedCalories');
+const remainingCal = document.getElementById('remainingCal');
+const budgetSpan = document.getElementById('budet');
+const consumedSpan = document.getElementById('consumed');
 
 
 console.log(meals);
@@ -91,6 +97,7 @@ btnAddMeal.addEventListener('click', function(){
 
 function CalculateCalories(budget, plan){
     console.log(budget - plan);
+    return budget - plan;
 }
 
 mealsForm.addEventListener('submit', function(e){
@@ -108,6 +115,12 @@ mealsForm.addEventListener('submit', function(e){
         console.log(caloriesSubmitted);
     })
 
+    summaryContainer.style.display = "flex";
+
 
     calculateBtn.onclick = CalculateCalories(budgetSubmitted, caloriesSubmitted);
+    remainingCal.innerText = CalculateCalories(budgetSubmitted, caloriesSubmitted);
+    budgetSpan.innerText = budgetSubmitted;
+    consumedSpan.innerText = caloriesSubmitted;
+
 })
