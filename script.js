@@ -77,8 +77,13 @@ function choosingMeal(mealVal){
 
 
 btnAddMeal.addEventListener('click', function(){
-    choosingMeal(meals.value);
-    console.log(meals.value);
+    if(!budgetSubmitted){
+        alert('Please submit your calorie budget');
+    } else {
+        choosingMeal(meals.value);
+        console.log(meals.value);
+
+    }
 })
 
 
@@ -106,7 +111,3 @@ mealsForm.addEventListener('submit', function(e){
 
     calculateBtn.onclick = CalculateCalories(budgetSubmitted, caloriesSubmitted);
 })
-
-
-
-;
