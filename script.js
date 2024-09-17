@@ -3,17 +3,15 @@ const inputBudget = document.getElementById('inputBudget');
 const budget = document.getElementById('budget');
 const budgetHeadline = document.querySelector('.budgetHeadline');
 //Meals
+const mealsForm = document.querySelector('.mealsForm');
 const meals = document.getElementById('meals');
+const headline = document.querySelector('.headline');
 const btnAddMeal = document.getElementById('btnAddMeal');
+const calculateBtn = document.getElementById('calculate');
 
-console.log(meals.value);
 
-console.log(btnAddMeal);
 console.log(meals);
-console.log(meals.firstElementChild);
-// btnAddMeal.onclick = function(){
-//     console.log(meals.childNodes)
-// }
+console.log(mealsForm);
 
 
 //Submiting budget
@@ -29,58 +27,86 @@ form.addEventListener('submit', function(e){
 })
 
 
-//Submiting type meals entries
-const breakContainer = document.querySelector('.breakContainer');
-const lunchContainer = document.querySelector('.lunchContainer');
-const dinnerContainer = document.querySelector('.dinnerContainer');
-const snacksContainer = document.querySelector('.snacksContainer');
-// console.log(breakContainer)
-// const test = document.createElement('p')
-// test.innerText = 'this is a test'
-// breakContainer.append(test)
+//Chosing meal type
+function choosingMeal(mealVal){
+//     let container = document.createElement('div');
+    // container.classList.add('mealContainer');
+    // container.innerHTML = 
+    // `
+    //         <h3 class="headline" id="${mealVal}">${mealVal}</h3>
+    //         <label for="meal${mealVal}">Meal</label>
+    //         <input type="text" id="meal${mealVal}"></input>
+    //         <label for="calories${mealVal}">Calories</label>
+    //         <input type="number" id="calories${mealVal}"></input>
+    // `
+    let container = document.createElement('div');
+    container.classList.add('mealContainer');
 
-function createMeal(container){
-    const inputMeal = document.createElement('input');
-    const inputCalorie = document.createElement('input');
+        const headline = document.createElement('h3');
+        headline.classList.add('headline');
+        headline.innerText = mealVal;
+        container.appendChild(headline);
+    //Adding Meal
+        const mealLabel = document.createElement('label');
+        mealLabel.setAttribute('for', `meal${mealVal}`);
+        mealLabel.innerText = 'Meal ';
 
-    container.append(inputMeal);
-    container.append(inputCalorie);
+        const mealInput = document.createElement('input');
+        mealInput.setAttribute('type', 'text');
+        mealInput.id = `meal${mealVal}`;
+
+        container.appendChild(mealLabel);
+        container.appendChild(mealInput);
+    
+    //Adding Calories
+        const caloriesLabel = document.createElement('label');
+        caloriesLabel.setAttribute('for', `calories${mealVal}`);
+        caloriesLabel.innerText = 'Calories ';
+
+        const caloriesInput = document.createElement('input');
+        caloriesInput.setAttribute('type', 'number');
+        caloriesInput.id = `calories${mealVal}`;
+        
+        container.appendChild(caloriesLabel);
+        container.appendChild(caloriesInput);
+
+    
+
+    mealsForm.appendChild(container);
 }
 
-let currentMealType = meals.value;
-let mealContainer = breakContainer;
-meals.addEventListener('change', function(){
-    // console.log(this.value);
-    currentMealType = this.value;
-    mealContainer = `${this.value}Container`;
-    // console.log(mealContainer);
-    // console.log(currentMealType);
-
-
-    switch(currentMealType){
-        case 'breakfast':
-            mealContainer = breakContainer;
-            break;
-        case 'lunch':
-            mealContainer = lunchContainer;
-            break;
-        case 'dinner':
-            mealContainer = dinnerContainer;
-            break;
-        case 'snacks':
-            mealContainer = snacksContainer;
-            break;
-        default:
-            mealContainer = meals.value;
-    }
-
-})
-
-// btnAddMeal.addEventListener('click', createMeal(mealContainer));
 
 btnAddMeal.addEventListener('click', function(){
-    if(mealContainer){
-        createMeal(mealContainer);
+    choosingMeal(meals.value);
+    console.log(meals.value);
+})
 
-    }
-});
+
+//Getting calories and Calculating --------
+
+function CalculateCalories(budget, plan){
+    console.log(budget - plan);
+}
+
+mealsForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    let caloriesSubmitted = 0;
+    
+    const caloriesVal = document.querySelectorAll('.mealsForm .mealContainer input[type="number"]');
+
+    caloriesVal.forEach(item => {
+        console.log(typeof item.value);
+        const valueToNumber = Number(item.value);
+        // console.log(valueToNumber);
+
+        caloriesSubmitted += valueToNumber;
+        console.log(caloriesSubmitted);
+    })
+
+
+    calculateBtn.onclick = CalculateCalories(budgetSubmitted, caloriesSubmitted);
+})
+
+
+
+;
