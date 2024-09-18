@@ -28,7 +28,7 @@ input{
     border-radius: 20px;
     padding: 0.5rem;
     background-color: #f1f1f1;
-    color: #1eaaff;
+    color: #115e8d;
 }
 button{
     background-color: #1eaaff;
@@ -98,5 +98,6 @@ select{
 .summaryContainer h2{
     color: #48c9b0;
 }
+
 
 
